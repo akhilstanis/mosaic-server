@@ -1,0 +1,47 @@
+* {
+  margin:  0;
+  /*padding: 0;*/
+  font-family: 'Helvetica', 'Arial';
+}
+
+body:before, body:after {
+    content: "";
+    position: fixed;
+    background: #fff;
+    left: 0;
+    right: 0;
+    height: 10px;
+}
+body:before {
+    top: 0;
+}
+body:after {
+    bottom: 0;
+}
+body {
+    border-left: 10px solid #fff;
+    border-right: 10px solid #fff;
+}
+
+html, body {
+  height: 100%;
+  color: #fff;
+
+
+  /*
+    Disable selection on double click
+    http://stackoverflow.com/questions/880512/prevent-text-selection-after-double-click
+  */
+  -webkit-user-select: none; /* webkit (safari, chrome) browsers */
+  -moz-user-select: none;    /* mozilla browsers */
+  -khtml-user-select: none;  /* webkit (konqueror) browsers */
+  -ms-user-select: none;     /* IE10+ */
+}
+
+body {
+  /*padding: 20px;*/
+  background-color: #000;
+  /*border: #fff 10px solid;*/
+}
+
+span { display: block; }

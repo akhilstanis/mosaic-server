@@ -1,0 +1,58 @@
+<!doctype html>
+<html>
+
+  <head>
+    <meta name="apple-mobile-web-app-capable" content="yes" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" type="text/css" href="style.css">
+  </head>
+
+  <body>
+    <span id="tile-id-container"></span>
+  </body>
+
+  <script src="js/jquery.min.js"></script>
+  <script src="js/jquery.mobile-events.js"></script>
+  <script src="js/jquery.backstretch.min.js"></script>
+  <script src="js/jquery-bigtext.js"></script>
+  <script src="js/screenfull.js"></script>
+  <script src="/socket.io/socket.io.js"></script>
+
+  <script>
+    $(function(){
+      var chars = ['A','B','C','D','E','F','G','H','I','J','K','L','M','N','O','P','Q','R','S','T','U','V','W','X','Y','Z'];
+      var tileId = chars[Math.floor(Math.random()*chars.length)];
+      var $tileIdContainer = $("span#tile-id-container");
+
+      $tileIdContainer.html('&nbsp;' + tileId + '&nbsp;').bigText({
+        rotateText: 0,
+        fontSizeFactor: 1.0
+      });
+
+      var socket = io();
+      socket.on('change', function(tile) {
+        if(parseInt(tile.id) == tileId) {
+          $tileIdContainer.hide();
+          $.backstretch(tile.url);
+        }
+      });
+
+      $('body').on('doubletap',function(){ if (screenfull.enabled) screenfull.toggle(); });
+
+      var rotation = 0;
+      var rotate = function() {
+        rotation += 90;
+
+        $tileIdContainer.bigText({
+          rotateText: rotation,
+          fontSizeFactor: 1.0
+        });
+      }
+
+      $('body').on('singletap',rotate);
+    });
+  </script>
+
+
+
+</html>

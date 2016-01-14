@@ -1,0 +1,11 @@
+{
+  "name": "mosaic-server",
+  "version": "0.0.1",
+  "description": "Mosiac server!",
+  "dependencies": {
+    "body-parser": "^1.13.2",
+    "express": "^4.13.1",
+    "multer": "^1.0.1",
+    "socket.io": "^1.3.6"
+  }
+}
